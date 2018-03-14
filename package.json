@@ -1,6 +1,7 @@
 {
   "name": "atom-bmob",
   "version": "0.1.2",
+  "author": "杨俊宁",
   "description": "Bmob 后端云代码块插件",
   "keywords": [
     "bmob",
@@ -11,6 +12,5 @@
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
-  },
-  "dependencies": {}
+  }
 }
