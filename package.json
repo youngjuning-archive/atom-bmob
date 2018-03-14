@@ -1,7 +1,11 @@
 {
   "name": "atom-bmob",
   "version": "0.1.2",
-  "author": "杨俊宁",
+  "author": {
+    "name": "杨俊宁",
+    "email": "youngjuning@aliyun.com",
+    "url": "http://www.wakeuptocode.me/"
+  },
   "description": "Bmob 后端云代码块插件",
   "keywords": [
     "bmob",
