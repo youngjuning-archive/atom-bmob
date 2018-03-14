@@ -1,0 +1,237 @@
+'.source.js':
+	'构建Bmob.Query对象':
+		'prefix': 'bquery'
+		'body': """
+			let ${1:目标类型} = Bmob.Object.extend('${1:目标类型}');
+			let ${2:query} = new Bmob.Query(${1:目标类型});
+		"""
+		'description': '查询数据'
+		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_17'
+	'查询所有数据':
+    'prefix': 'bfind'
+    'body': """
+      find().then((res)=>{
+        console.log(res);
+      },(e)=>{
+        console.log(e);
+      })
+    """
+    'description': '查询数据->查询所有数据'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_18'
+	'查询单条数据':
+		'prefix': 'bget'
+		'body': """
+			get(${1:objectId}).then((res)=>{
+				// The object was retrieved successfully.
+				// 获取对象特殊属性
+				let id = res.id,
+					createdAt = res.createdAt,
+					updatedAt = res.updatedAt;
+				// 调用get方法获取对应属性的值
+				$2
+			}, (e)=>{
+				console.log(e);
+			})
+		"""
+		'description': '查询数据->查询单条数据'
+		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_20'
+	'获取第一个符合条件的对象':
+		'prefix': 'bfirst'
+		'body': """
+			first().then((res)=>{
+				// 查询成功
+				$2
+			}, (e)=>{
+				console.log(e);
+			})
+		"""
+		'description': '查询数据'
+		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_17'
+	# 条件查询
+  '查询某个属性等于某个值的数据':
+    'prefix': 'bequalTo'
+    'body': """
+      equalTo('${1:key}','$value');
+    """
+    'description': '条件查询->查询某个属性等于某个值'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询某个属性不等于某个值的数据':
+    'prefix': 'bnotEqualTo'
+    'body': """
+      notEqualTo('${1:key}','$value');
+    """
+    'description': '条件查询->查询某个属性不等于某个值'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '模糊查询某个值':
+    'prefix': 'bmequalTo'
+    'body': """
+      // 模糊查询目前只提供给付费套餐会员使用
+      equalTo('${1:key}',{'$regex':"" + k + ".*"});
+    """
+    'description': '条件查询->模糊查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询大于某个日期的数据':
+    'prefix': 'blessThanDate'
+    'body': """
+      query.equalTo("dateTime", {"$gte":{"__type":"Date","iso":"2011-08-21 18:02:52"}});
+    """
+    'description': '条件查询->查询大于某个日期的数据'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询今天内的数据':
+    'prefix': 'blessThanDate'
+    'body': """
+      query.equalTo("$and",[{"createdAt":{"$gte":{"__type":"Date","iso":"2014-07-15 00:00:00"}}},{"createdAt":{"$lte":{"__type":"Date","iso":"2014-07-15 23:59:59"}}}]);
+    """
+    'description': '条件查询->查询今天内的数据'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询某个属性小于某个值的数据':
+    'prefix': 'blessThan'
+    'body': """
+      lessThan('${1:key}','$value');
+    """
+    'description': '条件查询->对查询的属性值进行大小比较'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询某个属性小于或等于某个值的数据':
+    'prefix': 'blessThanOrEqualTo'
+    'body': """
+      lessThanOrEqualTo('${1:key}','$value');
+    """
+    'description': '条件查询->对查询的属性值进行大小比较'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询某个属性大于某个值的数据':
+    'prefix': 'bgreaterThan'
+    'body': """
+      greaterThan('${1:key}','$value');
+    """
+    'description': '条件查询->对查询的属性值进行大小比较'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+  '查询某个属性大于或等于某个值的数据':
+    'prefix': 'bgreaterThanOrEqualTo'
+    'body': """
+      greaterThanOrEqualTo('${1:key}','$value');
+    """
+    'description': '条件查询->对查询的属性值进行大小比较'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_21'
+	# 分页查询
+	'限制查询结果的数据条数来进行分页':
+    'prefix': 'blimit'
+    'body': 'limit(${1:10});// 默认10，最大有效值1000'
+    'description': '查询数据->分页查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
+  '跳过查询的前多少条数据来实现分页查询的功能':
+    'prefix': 'bskip'
+    'body': 'query.skip(10); // 默认10'
+    'description': '查询数据->分页查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
+	# 结果排序
+	'对指定字段升序排序':
+    'prefix': 'bascending'
+    'body': """
+      ascending('${1:列名称}')
+    """
+    'description': '查询数据->结果排序'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_23'
+  '对指定字段降序排序':
+    'prefix': 'bdescending'
+    'body': """
+      descending('${1:列名称}')
+    """
+    'description': '查询数据->结果排序'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_23'
+	# 统计记录数量
+	'统计记录数量':
+    'prefix': 'bcount'
+    'body': """
+      count().then((count)=>{
+        // 查询成功，返回记录数量
+        console.log('共有'+count+'条记录');
+      },(e)=>{
+        // 查询失败
+        console.log(e);
+      })
+    """
+    'description': '统计记录数量'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_24'
+	# 复杂查询
+	'查询某一字段值在某一集合中的记录':
+    'prefix': 'bcontainedIn'
+    'body': """
+      containedIn('${1:key}',['${2:value1}','${3:value2}','${4:value3}']);
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+  '查询某一字段值在某一集合外的记录':
+    'prefix': 'bnotContainedIn'
+    'body': """
+      notContainedIn('${1:key}',['${2:value1}','${3:value2}','${4:value3}']);
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+  '查询含有某一特定属性的对象':
+    'prefix': 'bexists'
+    'body': """
+      exists('$key');
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+  '查询不含有某一特定属性的对象':
+    'prefix': 'bdoesNotExists'
+    'body': """
+      doesNotExists('$key');
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+  '复杂查询->嵌套子查询':
+    'prefix': 'bmatchesKeyInQuery'
+    'body': """
+      matchesKeyInQuery('${1:key1}','${2:key2}',${3:inQuery});
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+  '复杂查询->获取属性不在子查询结果中的对象':
+    'prefix': 'bdoesMatchesKeyInQuery'
+    'body': """
+      doesMatchesKeyInQuery('${1:key1}','${2:key2}',${3:inQuery});
+    """
+    'description': '查询数据->复杂查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_25'
+	# 查询指定列
+	'查询指定列':
+    'prefix': 'bselect'
+    'body': """
+      select('${1:指定列名}');
+    """
+    'description': '查询数据->查询指定列'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_26'
+	# 对字符串类型做查询
+	'查询以某一特定字符串开头的记录':
+    'prefix': 'bstartWith'
+    'body': """
+      startWith('${1:key}','${2:string}');
+    """
+    'description': '数据查询->对字符串类型做查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_27'
+	# 或查询
+	'或查询':
+    'prefix': 'bor'
+    'body': """
+      let mainQuery = Bmob.Query.or(query1,query2);
+      $2
+    """
+    'description': '查询数据->或查询'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_28'
+	# 统计相关的查询
+	'计算总和':
+	  'prefix': 'bsum'
+	  'body': """
+			_extraOptions = {'sum':'${1:Number类型的列}'};
+		"""
+	  'description': '查询数据->统计相关的查询'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_29'
+	'分组计算总和':
+	  'prefix': 'bsumGroupby'
+	  'body': """
+			_extraOptions = {'sum':'${:Number类型的列}','groupby':'${2:分组依据的列}'}
+		"""
+	  'description': '查询数据->统计相关的查询'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_29'

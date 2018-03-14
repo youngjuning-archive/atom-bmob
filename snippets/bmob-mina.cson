@@ -1,0 +1,126 @@
+'.source.js':
+	'微信a方案生成小程序二维码':
+		'prefix': 'agenerateCode'
+		'body': """
+			//方案a: 适用于需要的码数量较少的业务场景
+			Bmob.generateCode({
+				'path': ${1:path},// 不能为空，最大长度128字节
+				'width': ${2:430},// 二维码宽度，这个参数微信规定不能少于180
+				'interface': 'a',// 对应微信二维码a方案
+				'type': ${3:0},// 默认0，返回二维码base64数据。如果为1则服务端返回二维码网络路径
+			}).then((res)=>{
+					this.setData({
+						${4:qrcode}: res.qrcode
+					})
+				},(e)=>{
+				// 失败
+			})
+		"""
+		'description': '生成小程序二维码'
+		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_12'
+	'微信b方案生成小程序二维码':
+	  'prefix': 'bgenerateCode'
+	  'body': """
+			// 方案b: 适用于需要的码数量极多，或仅临时使用的业务场景
+			Bmob.generateCode({
+				'scence': '${3:Bmob}',// 微信b方案才需要此值
+				'path': ${1:path},// 必须是已经发布的小程序存在的页面（否则报错），如果不填写这个字段，默认跳主页
+				'width': ${2:430},// 二维码宽度，这个参数微信规定不能少于180
+				'interface': 'b',// 对应微信二维码b方案
+				'type': ${4:0}// 默认0，返回二维码base64数据。如果为1则服务端返回二维码网络路径
+			}).then((res)=>{
+				this.setData({
+				  ${4:qrcode}: res.qrcode
+				})
+			},(e)=>{
+				// 失败
+			})
+		"""
+	  'description': '生成小程序二维码'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_12'
+	'微信c方案生成小程序二维码':
+		'prefix': 'cgenerateCode'
+		'body': """
+			// 方案c: 适用于需要的码数量较少的业务场景
+			Bmob.generateCode({
+				'path': ${1:path},// 不能为空，最大长度128字节
+				'width': ${2:430},// 二维码宽度，这个参数微信规定不能少于180
+				'interface': 'c',// 对应微信二维码c方案
+				'type': ${3:0},// 默认0，返回二维码base64数据。如果为1则服务端返回二维码网络路径
+			}).then((res)=>{
+				this.setData({
+				  ${4:qrcode}: res.qrcode
+				})
+				},(e)=>{
+					// 失败
+			})
+		"""
+		'description': '生成小程序二维码'
+		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_12'
+	'小程序发送模版消息':
+	  'prefix': 'bsendMessage'
+	  'body': """
+			let currentUser = Bmob.User.current();
+			var temp = {
+				'touser': currentUser.get('openid'),
+				'template_id': 'B-2GcobfYnptevxY8G3SdA72YLYGZpOoJO_FEHlouWg',
+				'page': 'pages/index/index',
+				'form_id': formId,
+				'data': {
+					'keyword1': {
+						'value': 'SDK测试内容',
+						'color': '#173177'
+					}
+				},
+				'emphasis_keyword': 'keyword1.DATA'
+			}
+			Bmob.bsendMessage(temp).then((res)=>{
+				console.log('发送成功');
+			},(e)=>{
+				console.log(e);
+			})
+		"""
+	  'description': '小程序模版消息'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_13'
+	'小程序支付':
+	  'prefix': 'bwechatPay'
+	  'body': """
+			let openid = wx.getStorageSync('openid');
+			// 传参数：金额，名称，描述，openid
+			Bmob.Pay.wechatPay(${1:金额},'${2:名称}','${3:描述}',openid).then((resp)=>{
+				console.log(resp)
+
+				// 服务端返回成功
+				let timeStap = resp.timestap,
+					nonceStr = resp.nonceStr,
+					packages = resp.packages,
+					orderId = resp.out_trade_no,//订单号，如需保存请建表保存
+					sign = resp.sign;
+
+				// 打印订单号
+				console.log(orderId);
+
+				// 发起支付
+				wx.requestPayment({
+					timeStap: timeStap,
+					nonceStr: noneStr,
+					packages: packages,
+					signType: 'MD5',
+					paySign: sign,
+					success: function(res) {
+						// 付款成功，这里可以写你的业务逻辑
+						console.log(res)
+					},
+					fail: function(res){
+						// 付款失败
+						console.log('付款失败');
+						console.log(res);
+					}
+				});
+			},(e)=>{
+				console.log('服务端返回失败');
+				console.log(e);
+			})
+		"""
+	  'description': '小程序支付'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_15'

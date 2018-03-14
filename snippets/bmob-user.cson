@@ -1,0 +1,8 @@
+'.source.js':
+  '当前用户':
+    'prefix': '当前用户'
+    'body': """
+			let currentUser = Bmob.User.current();
+		"""
+    'description': '用户->当前用户'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
