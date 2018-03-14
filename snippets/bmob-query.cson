@@ -12,6 +12,7 @@
     'body': """
       find().then((res)=>{
         console.log(res);
+				$1
       },(e)=>{
         console.log(e);
       })
