@@ -2,21 +2,21 @@
 	'创建Bmob.Object子类':
     'prefix': 'bclass'
     'body': """
-			let $1 = Bmob.Object.extend('$1');
+			Bmob.Object.extend('$1');
 		"""
     'description': 'Bmob对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_3'
 	'创建指定类的一个实例':
     'prefix': 'bnew'
     'body': """
-      let $1 = new $2();
+      new $1();
     """
     'description': '创建对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
 	'创建AV.Object子类的一个实例':
 	  'prefix': 'bobject'
 	  'body': """
-	    let $1 = new Bmob.Object('$2');
+	    new Bmob.Object('$1');
 	  """
 	  'description': '创建对象'
 	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
@@ -30,12 +30,12 @@
   '将当前对象的内容保存到服务端':
     'prefix': 'bsave'
     'body': """
-      save().then((${2:res})=> {
-        ${3:// 添加成功，返回添加成功之后的objectId（注意：返回的属性名是id，不是objectId）}
-      }, (e)=> {
-        ${4:// 添加失败}
+			save().then((${2:res})=> {
+			  ${3:// 添加成功，返回添加成功之后的objectId（注意：返回的属性名是id，不是objectId）}
+			}, (e)=> {
+			  ${4:// 添加失败}
 			  console.log(e);
-      });
+			});
     """
     'description': '添加数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_16'
