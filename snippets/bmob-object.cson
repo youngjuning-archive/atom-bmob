@@ -23,7 +23,7 @@
   '设置指定对象的属性':
     'prefix': 'bset'
     'body': """
-      set('${2:key}',${2:value});
+      set('${1:key}',${2:value});
     """
     'description': '添加一行数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/#_4'

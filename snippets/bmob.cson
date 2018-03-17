@@ -2,7 +2,7 @@
   'Bmob全局初始化':
     'prefix': 'binit'
     'body': """
-      const Bmob = require('utils/bmob.js');
+      import Bmob form 'utils/bmob.js';
       const ApplicationId = '$1';
       const ApiKey = '$2';
       Bmob.initialize(ApplicationId, ApiKey);
@@ -13,14 +13,14 @@
   '页面中引入Bmob对象':
     'prefix': 'bmob'
     'body': """
-      const Bmob = require('../../utils/bmob.js');
+      import Bmob from '../../utils/bmob.js';
     """
     'description': '下载和安装BmobSDK'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/#bmobsdk'
   '初始化Websoket通讯':
     'prefix': 'bmobwebsocket'
     'body': """
-      let BmobSocketIo = require('utils/bmobSocketIo.js').BmobSocketIo;
+      const BmobSocketIo = require('utils/bmobSocketIo.js').BmobSocketIo;
       BmobSocketIo.initialize(ApplicationId);
     """
     'description': 'WebSocket 通讯（聊天）'
@@ -28,7 +28,7 @@
   '对应页面引入BmobSocketIo':
     'prefix': 'bmobsocketio'
     'body': """
-      let BmobSocketIo = require('../../${1:../}utils/bmobSocketIo.js').BmobSocketIo;
+      const BmobSocketIo = require('../../${1:../}utils/bmobSocketIo.js').BmobSocketIo;
     """
     'description': 'WebSocket 通讯（聊天）'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/index.html#websocket'
