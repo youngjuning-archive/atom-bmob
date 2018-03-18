@@ -6,6 +6,22 @@
 		"""
     'description': 'Bmob对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_3'
+	'使用ES6类的语法':
+		'prefix': 'b6class'
+		'body': """
+			class $1 extends Bmob.Object.extend('$1');{
+				constructor() {
+					$2
+				}
+				/**
+				* 调用父类的toJSON
+				*/
+				toJSON() {
+					return super.toJSON()
+				}
+				$3
+			}
+		"""
 	'创建指定类的一个实例':
     'prefix': 'bnew'
     'body': """
