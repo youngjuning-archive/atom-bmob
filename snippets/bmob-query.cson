@@ -115,7 +115,7 @@
 	# 分页查询
 	'限制查询结果的数据条数来进行分页':
 		'prefix': 'blimit'
-		'body': 'limit(${1:10});// 默认10，最大有效值1000'
+		'body': 'limit(${1:10});// 默认${1:10}，最大有效值1000'
 		'description': '查询数据->分页查询'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
 	'跳过查询的前多少条数据来实现分页查询的功能':
@@ -145,10 +145,11 @@
 			count().then((count)=>{
 				// 查询成功，返回记录数量
 				console.log('共有'+count+'条记录');
+				$1
 			},(e)=>{
 				// 查询失败
 				console.log(e);
-			})
+			});
 		"""
 		'description': '统计记录数量'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_24'
