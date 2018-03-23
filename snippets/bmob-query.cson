@@ -12,8 +12,8 @@
 			find().then((res)=>{
 				console.log(res);
 				$1
-			},(e)=>{
-				console.log(e);
+			},(error)=>{
+				console.log(error);
 			})
 		"""
 		'description': '查询数据->查询所有数据'
@@ -29,8 +29,8 @@
 					updatedAt = res.updatedAt;
 				// 调用get方法获取对应属性的值
 				$2
-			}, (e)=>{
-				console.log(e);
+			}, (error)=>{
+				console.log(error);
 			})
 		"""
 		'description': '查询数据->查询单条数据'
@@ -41,8 +41,8 @@
 			first().then((res)=>{
 				// 查询成功
 				$2
-			}, (e)=>{
-				console.log(e);
+			}, (error)=>{
+				console.log(error);
 			})
 		"""
 		'description': '查询数据'
@@ -146,9 +146,9 @@
 				// 查询成功，返回记录数量
 				console.log('共有'+count+'条记录');
 				$1
-			},(e)=>{
+			},(error)=>{
 				// 查询失败
-				console.log(e);
+				console.log(error);
 			});
 		"""
 		'description': '统计记录数量'
