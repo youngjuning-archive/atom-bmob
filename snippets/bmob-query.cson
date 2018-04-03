@@ -120,7 +120,7 @@
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
 	'跳过查询的前多少条数据来实现分页查询的功能':
 		'prefix': 'bskip'
-		'body': 'query.skip(10); // 默认10'
+		'body': 'skip(10); // 默认10'
 		'description': '查询数据->分页查询'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
 	# 结果排序

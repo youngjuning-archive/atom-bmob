@@ -128,10 +128,10 @@
 	  'prefix': 'brun'
 	  'body': """
 			Bmob.Cloud.run('test',{'name':'tom'}).then((res)=>{
-	      console.log(res);
-	    },(e)=>{
-	      console.log(e);
-	    })
+			  console.log(res);
+			},(e)=>{
+			  console.log(e);
+			})
 		"""
 	  'description': '小程序使用云逻辑'
 	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_72'

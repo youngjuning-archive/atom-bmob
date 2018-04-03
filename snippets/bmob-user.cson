@@ -1,8 +1,20 @@
 '.source.js':
   '当前用户':
-    'prefix': '当前用户'
+    'prefix': 'bcurrent'
     'body': """
 			let currentUser = Bmob.User.current();
+      if (currentUser){
+        // do stuff with the user
+      } else {
+        // show the signup or login page
+      }
 		"""
+    'description': '用户->当前用户'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
+  '退出登录':
+    'prefix': 'blogout'
+    'body': """
+      Bmob.User.logOut();
+    """
     'description': '用户->当前用户'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
