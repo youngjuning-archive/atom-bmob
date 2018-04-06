@@ -5,12 +5,22 @@
 			let currentUser = Bmob.User.current();
       if (currentUser){
         // do stuff with the user
+        $1
       } else {
         // show the signup or login page
+        $2
       }
 		"""
     'description': '用户->当前用户'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
+  '微信登录':
+    'prefix': 'bauth'
+    'body': """
+      let user = new Bmob.User() //实例化用户对象
+      user.auth()
+    """
+    'description': '登录注册集合类'
+    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_57'
   '退出登录':
     'prefix': 'blogout'
     'body': """

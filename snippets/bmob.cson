@@ -2,10 +2,10 @@
   'Bmob全局初始化':
     'prefix': 'binit'
     'body': """
-      import Bmob form 'utils/bmob.js';
-      const ApplicationId = '$1';
-      const ApiKey = '$2';
-      Bmob.initialize(ApplicationId, ApiKey);
+      import Bmob from './utils/bmob.js'
+      const ApplicationId = '$1'
+      const ApiKey = '$2'
+      Bmob.initialize(ApplicationId, ApiKey)
       $3
     """
     'description': '下载和安装BmobSDK'
