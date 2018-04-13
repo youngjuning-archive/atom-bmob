@@ -2,7 +2,7 @@
   '当前用户':
     'prefix': 'bcurrent'
     'body': """
-			let currentUser = Bmob.User.current();
+			let currentUser = Bmob.User.current()
       if (currentUser){
         // do stuff with the user
         $1
@@ -13,7 +13,7 @@
 		"""
     'description': '用户->当前用户'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
-  '微信登录':
+  '微信小程序一键登录':
     'prefix': 'bauth'
     'body': """
       let user = new Bmob.User() //实例化用户对象
@@ -24,7 +24,14 @@
   '退出登录':
     'prefix': 'blogout'
     'body': """
-      Bmob.User.logOut();
+      Bmob.User.logOut()
     """
     'description': '用户->当前用户'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_58'
+	'更新前端用户缓存':
+		'prefix': 'bsaveCurrentUser'
+		'body': """
+			let currentUser = Bmob.User.current()
+			currentUser.set('${1:key}',${2:value})
+			Bmob.User._saveCurrentUser(currentUser)
+		"""
