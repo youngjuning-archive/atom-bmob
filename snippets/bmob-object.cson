@@ -9,7 +9,7 @@
 	'为Bmob.Object的子类添加一些实例方法和类方法':
 	  'prefix': 'bbclass'
 	  'body': """
-			let ${1:class} = Bmob.Object.extend("${1:class}", {
+			let ${1:className} = Bmob.Object.extend("${1:className}", {
 				//实例方法，不需要实例化对象，直接使用this
 				$2
 			}, {
