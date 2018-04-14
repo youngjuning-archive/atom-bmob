@@ -2,10 +2,23 @@
 	'创建Bmob.Object子类':
     'prefix': 'bclass'
     'body': """
-			Bmob.Object.extend('$1');
+			Bmob.Object.extend('$1')
 		"""
     'description': 'Bmob对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_3'
+	'为Bmob.Object的子类添加一些实例方法和类方法':
+	  'prefix': 'bbclass'
+	  'body': """
+			let ${1:class} = Bmob.Object.extend("${1:class}", {
+				//实例方法，不需要实例化对象，直接使用this
+				$2
+			}, {
+			  //类方法，需要实例化对象
+			  $3
+			})
+	  """
+	  'description': '创建对象'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
 	'使用ES6类的语法':
 		'prefix': 'b6class'
 		'body': """
@@ -22,24 +35,17 @@
 				$3
 			}
 		"""
-	'创建指定类的一个实例':
-    'prefix': 'bnew'
-    'body': """
-      new $1();
-    """
-    'description': '创建对象'
-    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
 	'创建AV.Object子类的一个实例':
 	  'prefix': 'bobject'
 	  'body': """
-	    new Bmob.Object('$1');
+	    new Bmob.Object('$1')
 	  """
 	  'description': '创建对象'
 	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
   '设置指定对象的属性':
     'prefix': 'bset'
     'body': """
-      set('${1:key}',${2:value});
+      set('${1:key}',${2:value})
     """
     'description': '添加一行数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/#_4'
@@ -47,25 +53,17 @@
     'prefix': 'bsave'
     'body': """
 			save().then((${2:res})=> {
-			  ${3:// 添加成功，返回添加成功之后的objectId（注意：返回的属性名是id，不是objectId）}
-			}, (e)=> {
-			  ${4:// 添加失败}
-			  console.log(e);
-			});
-    """
-    'description': '添加数据'
-    'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_16'
-  '修改服务端的对象':
-    'prefix': 'msave'
-    'body': """
-      save();
+			  $3
+			}).catch((error)=>{
+				console.log(error)
+			})
     """
     'description': '添加数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_16'
 	'更新成功后获取更新后的对象属性':
     'prefix': 'bfetchWhenSave'
     'body': """
-      fetchWhenSave(true);
+      fetchWhenSave(true)
     """
     'description': '修改数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_32'
@@ -76,16 +74,16 @@
       destroy().then((res)=>{
         // 删除成功
         $1
-      },(e)=>{
-        // 删除失败
-      })
+      }).catch((error)=>{
+				console.log(error)
+			})
     """
     'description': '删除数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_33'
 	'批量删除数据':
     'prefix': 'bodestroyAll'
     'body': """
-      Bmob.Object.destroyAll(${1:查询结果});// 单个请求每次最多删除50条
+      Bmob.Object.destroyAll(${1:查询结果})// 单个请求每次最多删除50条
     """
     'description': '删除数据->批量删除对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_33'
@@ -95,9 +93,9 @@
       destroyAll().then((res)=>{
         // 删除成功
         $1
-      },(e)=>{
-        // 删除失败
-      })
+      }).catch((error)=>{
+				console.log(error)
+			})
     """
     'description': '删除数据'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_33'
@@ -105,7 +103,7 @@
 	'删除字段':
     'prefix': 'bunset'
     'body': """
-      unset('${1:要删除的字段}');
+      unset('${1:要删除的字段}')
     """
     'description': '删除数据->删除字段'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_34'
@@ -113,28 +111,28 @@
 	'把原本不存在的对象加入数据，所有加入的位置没有保证':
     'prefix': 'baddUnique'
     'body': """
-      addUnique('${1:arrayKey}','$2:value');// 该方法保证唯一性
+      addUnique('${1:arrayKey}','$2:value')// 该方法保证唯一性
     """
     'description': '数组操作->添加及更新数组'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_37'
   '在一个数组的末尾加入一个给定的对象':
     'prefix': 'badd'
     'body': """
-      add('${1:arrayKey}','$2:value');
+      add('${1:arrayKey}','$2:value')
     """
     'description': '数组操作->添加及更新数组'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_37'
 	'数组查询':
     'prefix': 'bcontainsAll'
     'body': """
-      containsAll('${1:arrayKey}',['${2:item1}',${3:item2}]);
+      containsAll('${1:arrayKey}',['${2:item1}',${3:item2}])
     """
     'description': '数组操作->数组查询'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_38'
 	'删除指定所有的实例':
     'prefix': 'bremove'
     'body': """
-      remove('${1:arrayKey}',['${2:item1}','${3:item2}']);
+      remove('${1:arrayKey}',['${2:item1}','${3:item2}'])
     """
     'description': '数组操作->删除数组'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_39'
@@ -142,7 +140,7 @@
 	'批量更新':
     'prefix': 'bsaveAll'
     'body': """
-      Bmob.Object.saveAll(${1:指定的对象});
+      Bmob.Object.saveAll(${1:指定的对象})
     """
     'description': '批量操作->批量更新示例'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_41'
