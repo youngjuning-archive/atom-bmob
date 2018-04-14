@@ -13,7 +13,7 @@
   '页面中引入Bmob对象':
     'prefix': 'bmob'
     'body': """
-      import Bmob from '../../utils/bmob.min.js'
+      import Bmob from '../utils/bmob.min.js'
     """
     'description': '下载和安装BmobSDK'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/#bmobsdk'
@@ -28,7 +28,7 @@
   '对应页面引入BmobSocketIo':
     'prefix': 'bmobsocketio'
     'body': """
-      const BmobSocketIo = require('../../${1:../}utils/bmobSocketIo.js').BmobSocketIo
+      const BmobSocketIo = require('../../utils/bmobSocketIo.js').BmobSocketIo
     """
     'description': 'WebSocket 通讯（聊天）'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/index.html#websocket'
