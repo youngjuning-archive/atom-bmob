@@ -54,8 +54,8 @@
     'body': """
 			save().then((${2:res})=> {
 			  $3
-			}).catch((error)=>{
-				console.log(error)
+			}).catch(err =>{
+				console.log(err)
 			})
     """
     'description': '添加数据'
@@ -71,11 +71,11 @@
 	'删除数据':
     'prefix': 'bdestroy'
     'body': """
-      destroy().then((res)=>{
+      destroy().then(res =>{
         // 删除成功
         $1
-      }).catch((error)=>{
-				console.log(error)
+      },err =>{
+				console.log(err)
 			})
     """
     'description': '删除数据'
@@ -90,11 +90,11 @@
 	'将查询出来的对象都删除，或者删除符合条件的所有对象':
     'prefix': 'bqdestroyAll'
     'body': """
-      destroyAll().then((res)=>{
+      destroyAll().then(res =>{
         // 删除成功
         $1
-      }).catch((error)=>{
-				console.log(error)
+      },err =>{
+				console.log(err)
 			})
     """
     'description': '删除数据'
@@ -147,22 +147,23 @@
 	'批量删除':
     'prefix': 'bdestroyAll'
     'body': """
-      Bmob.Object.destroyAll(${1:要删除的对象}).then((res)=>{
+      Bmob.Object.destroyAll(${1:要删除的对象}).then(res =>{
         // 删除成功
-        $1
-      },(e)=>{
-        // 异常处理
-      })$2
+        console.log(res)
+      },err =>{
+				console.log(err)
+      })
     """
     'description': '批量增删改'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_42'
 	'批量获取':
     'prefix': 'bfetchAll'
     'body': """
-      Bmob.Object.fetchAll().then((res)=>{
+      Bmob.Object.fetchAll().then(res =>{
         // 成功
-      },(e)=>{
-        // 异常处理
+				console.log(res)
+      },(err)=>{
+        console.log(err)
       })
     """
     'description': '批量增删改'

@@ -9,11 +9,11 @@
 	'查询所有数据':
 		'prefix': 'bfind'
 		'body': """
-			find().then((res)=>{
+			find().then(res =>{
 				console.log(res)
 				$1
-			}).catch((error)=>{
-				console.log(error)
+			},err =>{
+				console.log(err)
 			})
 		"""
 		'description': '查询数据->查询所有数据'
@@ -21,11 +21,11 @@
 	'查询单条数据':
 		'prefix': 'bget'
 		'body': """
-			get(${1:id}).then((res)=>{
+			get(${1:id}).then(res =>{
 				// The object was retrieved successfully.
 				$2
-			}).catch((error)=>{
-				console.log(error)
+			},err =>{
+				console.log(err)
 			})
 		"""
 		'description': '查询数据->查询单条数据'
@@ -33,11 +33,11 @@
 	'获取第一个符合条件的对象':
 		'prefix': 'bfirst'
 		'body': """
-			first().then((res)=>{
+			first().then(res =>{
 				// 查询成功
 				$2
-			}).catch((error)=>{
-				console.log(error)
+			},err =>{
+				console.log(err)
 			})
 		"""
 		'description': '查询数据'
@@ -145,8 +145,8 @@
 				// 查询成功，返回记录数量
 				console.log('共有'+count+'条记录')
 				$1
-			}).catch((error)=>{
-				console.log(error)
+			},err =>{
+				console.log(err)
 			})
 		"""
 		'description': '统计记录数量'
