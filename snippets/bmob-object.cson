@@ -10,10 +10,10 @@
 	  'prefix': 'bbclass'
 	  'body': """
 			let ${1:className} = Bmob.Object.extend("${1:className}", {
-				//实例方法，不需要实例化对象，直接使用this
+				//实例方法，需要实例化对象，使用 this 简化代码
 				$2
 			}, {
-			  //类方法，需要实例化对象
+			  //类方法，调用的时候不需要实例化对象
 			  $3
 			})
 	  """
