@@ -2,7 +2,7 @@
 	'构建Bmob.Query对象':
 		'prefix': 'bquery'
 		'body': """
-			new Bmob.Query(${1:目标类型})
+			let query = new Bmob.Query(${1:目标类型})
 		"""
 		'description': '查询数据'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_17'
@@ -10,7 +10,7 @@
 		'prefix': 'bfind'
 		'body': """
 			find().then((res)=>{
-				console.log(res);
+				console.log(res)
 				$1
 			}).catch((error)=>{
 				console.log(error)
@@ -111,7 +111,7 @@
 	'限制查询结果的数据条数来进行分页':
 		'prefix': 'blimit'
 		'body': """
-			limit(${1:10});// 默认10，最大有效值1000
+			limit(${1:10})// 默认10，最大有效值1000
 		"""
 		'description': '查询数据->分页查询'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_22'
