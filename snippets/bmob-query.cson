@@ -2,7 +2,7 @@
 	'构建Bmob.Query对象':
 		'prefix': 'bquery'
 		'body': """
-			let query = new Bmob.Query(${1:目标类型})
+			new Bmob.Query(${1:目标类型})
 		"""
 		'description': '查询数据'
 		'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_17'
