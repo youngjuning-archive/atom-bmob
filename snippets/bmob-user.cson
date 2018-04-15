@@ -1,4 +1,4 @@
-'.source.js':
+'.source.js,javascript':
   '当前用户':
     'prefix': 'bcurrent'
     'body': """
@@ -35,3 +35,14 @@
 			currentUser.set('${1:key}',${2:value})
 			Bmob.User._saveCurrentUser(currentUser)
 		"""
+  '获取用户openid':
+    'prefix': 'brequestOpenId'
+    'body': """
+      Bmob.User.requestOpenId(res.code).then(res => {
+        console.log(res)
+      },err => {
+        console.log(err)
+      })
+    """
+    'description': ''
+    'descriptionMoreURL': ''
