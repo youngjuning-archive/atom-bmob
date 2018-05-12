@@ -2,7 +2,7 @@
 	'创建Bmob.Object子类':
     'prefix': 'bclass'
     'body': """
-			Bmob.Object.extend('$1')
+			const $1 = Bmob.Object.extend('$1')
 		"""
     'description': 'Bmob对象'
     'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_3'
@@ -23,9 +23,6 @@
 		'prefix': 'b6class'
 		'body': """
 			class $1 extends Bmob.Object.extend('$1'){
-				constructor() {
-					$2
-				}
 				/**
 				* 调用父类的toJSON
 				*/
@@ -35,10 +32,17 @@
 				$3
 			}
 		"""
+	'创建该类的一个实例':
+	  'prefix': 'bobject'
+	  'body': """
+	    let $1 = new ${2:ClassName}()
+	  """
+	  'description': '创建该类的一个实例'
+	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
 	'创建AV.Object子类的一个实例':
 	  'prefix': 'bobject'
 	  'body': """
-	    new Bmob.Object('$1')
+	    let $1 = new Bmob.Object('$1')
 	  """
 	  'description': '创建对象'
 	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_5'
