@@ -135,3 +135,8 @@
 		"""
 	  'description': '小程序使用云逻辑'
 	  'descriptionMoreURL': 'http://doc.bmob.cn/data/wechat_app/develop_doc/#_72'
+	'bgetBmobPath':
+    'prefix': 'bgetBmobPath'
+    'body': """
+      Bmob._getBmobPath(Bmob.User._CURRENT_USER_KEY)
+    """
